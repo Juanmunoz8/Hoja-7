@@ -21,7 +21,7 @@ public class Product implements Comparable<Product> {
 
     @Override
     public int compareTo(Product other) {
-        return this.sku.compareTo(other.sku);
+        return this.sku.trim().toLowerCase().compareTo(other.sku.trim().toLowerCase());
     }
 
     @Override

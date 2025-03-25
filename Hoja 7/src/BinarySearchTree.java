@@ -27,8 +27,22 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     private E searchRec(Node root, E key) {
-        if (root == null || root.data.equals(key)) return (root != null) ? root.data : null;
-        return (key.compareTo(root.data) < 0) ? searchRec(root.left, key) : searchRec(root.right, key);
+        if (root == null) return null;
+        int cmp = key.compareTo(root.data);
+        if (cmp == 0) return root.data;  // Encontrado
+        return (cmp < 0) ? searchRec(root.left, key) : searchRec(root.right, key);
+    }
+
+    public void inOrderTraversal() {
+        inOrderTraversalRec(root);
+    }
+    
+    private void inOrderTraversalRec(Node root) {
+        if (root != null) {
+            inOrderTraversalRec(root.left);
+            System.out.println(root.data);  // Imprime el producto en orden
+            inOrderTraversalRec(root.right);
+        }
     }
 }
 
